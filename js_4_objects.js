@@ -3,7 +3,8 @@ var persons = {
     lastName : 'gadgeter',
     age : 22,
     fullName : function(){
-        return persons.firstName + persons.lastName
+        // this keyword is used to refer the owner of the function
+        return this.firstName + this.lastName
     }
 }
 
