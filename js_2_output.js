@@ -6,6 +6,12 @@ window.alert(3+3)
 // document.write
 document.write(123+123)
 
+/* debugger keyword stops the execution of JavaScript, 
+and calls (if available) the debugging function.
+At that time, console should be opened by us.
+*/
+debugger
+
 // innerHTML
 document.getElementById("para").innerHTML = "abcd"
 
