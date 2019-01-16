@@ -40,7 +40,7 @@ promiseToCleanTheHouse.then(function(paramsFromResolveCall) {
 
 console.log("Promise : complex concept\n---------------------------------")
 
-isCleanedHouse = true, isRemovedGarbage = false
+isCleanedHouse = true, isRemovedGarbage = true
 
 cleanHouse = function() {
     return new Promise(function(resolve, reject) {
@@ -81,5 +81,17 @@ cleanHouse().then(function(msgFromResolve) {
 // }).then(function(msgFromResolve) {
 //     console.log('You have finished all. ' + msgFromResolve)
 // })
+
+// This function will execute if all promises are completed
+
+Promise.all([cleanHouse(), removeGarbage(), winChocolate()]).then(function() {
+    console.log("All are finished")
+})
+
+// This function will execute if any one of the promises is completed
+
+Promise.race([cleanHouse(), removeGarbage(), winChocolate()]).then(function() {
+    console.log("One of them is finished")
+})
 
 // ---------------------------------------
