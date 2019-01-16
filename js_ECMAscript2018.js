@@ -38,17 +38,19 @@ promiseToCleanTheHouse.then(function(paramsFromResolveCall) {
     console.log('The house is ' + paramsFromRejectCall)
 })
 
-console.log("Promise : complex concept")
+console.log("Promise : complex concept\n---------------------------------")
+
+isCleanedHouse = true, isRemovedGarbage = false
 
 cleanHouse = function() {
     return new Promise(function(resolve, reject) {
-        resolve('House is cleaned.')
+        isCleanedHouse ? resolve('House is cleaned.') : reject('House isn\'t cleaned.')
     })
 }
 
 removeGarbage = function(message) {
     return new Promise(function(resolve, reject) {
-        resolve(message + ' The garbage is removed.')
+        isRemovedGarbage ? resolve(message + ' The garbage is removed.') : reject(message + ' The garbage isn\'t removed.')
     })
 }
 
@@ -63,17 +65,21 @@ cleanHouse().then(function(msgFromResolve) {
         winChocolate(msgFromResolve).then(function(msgFromResolve) {
             console.log('You have finished all. ' + msgFromResolve)
         })
+    }).catch(function(msgFromReject) {
+        console.log(msgFromReject + ' You didn\'t win chocolate.')
     })
+}).catch(function(msgFromReject) {
+    console.log(msgFromReject)
 })
 
 // above lines could write aslike this
 
-cleanHouse().then(function(msgFromResolve) {
-    return removeGarbage(msgFromResolve)
-}).then(function(msgFromResolve) {
-    return winChocolate(msgFromResolve)
-}).then(function(msgFromResolve) {
-    console.log('You have finished all. ' + msgFromResolve)
-})
+// cleanHouse().then(function(msgFromResolve) {
+//     return removeGarbage(msgFromResolve)
+// }).then(function(msgFromResolve) {
+//     return winChocolate(msgFromResolve)
+// }).then(function(msgFromResolve) {
+//     console.log('You have finished all. ' + msgFromResolve)
+// })
 
 // ---------------------------------------
